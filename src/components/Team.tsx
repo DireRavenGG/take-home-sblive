@@ -2,13 +2,13 @@ import { Text } from "@chakra-ui/react";
 import { GameTeam } from "../../types/ResponseData";
 
 type TeamProps = {
-  team: GameTeam;
+  teamData: GameTeam;
 };
 
-const Team = ({ team }: TeamProps) => {
+const Team = ({ teamData }: TeamProps) => {
   return (
     <div>
-      <Text>{team.team.name}</Text>
+      <Text>{teamData.team.name}</Text>
     </div>
   );
 };

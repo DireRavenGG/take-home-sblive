@@ -9,7 +9,7 @@ const TeamsContainer = ({ teams }: TeamsContainerProps) => {
   return (
     <div>
       {teams.map((teamData) => {
-        return <Team key={teamData.id} team={teamData} />;
+        return <Team key={teamData.id} teamData={teamData} />;
       })}
     </div>
   );
