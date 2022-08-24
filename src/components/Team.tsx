@@ -18,7 +18,9 @@ const Team = ({ teamData }: TeamProps) => {
         )}
         <VStack spacing={0} align="start">
           <Heading size="sm">{school.name}</Heading>
-          <Text>{school.mascot}</Text>
+          <Box>
+            <Text>{school.mascot}</Text>
+          </Box>
         </VStack>
       </Stack>
     </div>
