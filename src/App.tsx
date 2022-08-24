@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+
+const getGameData = async (date: string) => {
+  const link = `/v2/games?date=${date}&priority_order=true`;
+  const res = await fetch(link);
+  const data = await res.json();
+  return data;
+};
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [games, setGames] = useState();
+  getGameData("2022-08-23").then((res) => {
+    setGames(res.data);
+  });
+  return <div className="App">{}</div>;
 }
 
 export default App;
