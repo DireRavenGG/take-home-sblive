@@ -7,7 +7,7 @@ type GameProps = {
 const Game = ({ game }: GameProps) => {
   return (
     <div>
-      <TeamsContainer teams={game.game_teams} />
+      <TeamsContainer teams={game.game_teams} match={game} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { Stack, Image, Text, Box, Heading } from "@chakra-ui/react";
+import { Stack, Image, Box, Heading } from "@chakra-ui/react";
 import { GameTeam } from "../../types/ResponseData";
 
 type TeamProps = {
