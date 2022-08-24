@@ -1,8 +1,8 @@
-import { Team as TeamType } from "../../types/ResponseData";
+import { GameTeam } from "../../types/ResponseData";
 import Team from "./Team";
 
 type TeamsContainerProps = {
-  teams: TeamType[];
+  teams: GameTeam[];
 };
 
 const TeamsContainer = ({ teams }: TeamsContainerProps) => {

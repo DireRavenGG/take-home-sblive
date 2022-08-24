@@ -6,7 +6,7 @@ export interface ResponseData {
 export interface Match {
   clock: string | null;
   date: string;
-  game_teams: Team[];
+  game_teams: GameTeam[];
   game_type_id: number;
   gender_id: number;
   hashtag: string | null;
@@ -29,7 +29,7 @@ export interface Match {
   uuid: string;
 }
 
-export interface Team {
+export interface GameTeam {
   cheers: number;
   created_at: string;
   forfeit: boolean;
@@ -39,6 +39,7 @@ export interface Team {
   official: boolean;
   score: number;
   schootout_score: number | null;
+  team: School;
 }
 
 export interface MetaData {
@@ -47,4 +48,35 @@ export interface MetaData {
   prev_page: number | null;
   total_pages: number;
   total_count: number;
+}
+
+export interface School {
+  id: number;
+  uuid: string;
+  slug: string;
+  sport_id: number;
+  primary_color: string;
+  secondary_color: string;
+  address: string;
+  gender_id: number;
+  level_id: number;
+  team_type_id: number;
+  school_id: number;
+  name: string;
+  mascot: string;
+  abbrev: string;
+  image: string;
+  cover_image: string | null;
+  city: string;
+  state: string;
+  instagram: string | null;
+  club_house: string | null;
+  owned: number;
+  hashtag: string | null;
+  url: string | null;
+  twitter: null;
+  link: {
+    fanapp: string;
+    webapp: string;
+  };
 }

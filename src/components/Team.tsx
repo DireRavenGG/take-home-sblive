@@ -1,11 +1,16 @@
-import { Team as TeamType } from "../../types/ResponseData";
+import { Text } from "@chakra-ui/react";
+import { GameTeam } from "../../types/ResponseData";
 
 type TeamProps = {
-  team: TeamType;
+  team: GameTeam;
 };
 
 const Team = ({ team }: TeamProps) => {
-  return <div></div>;
+  return (
+    <div>
+      <Text>{team.team.name}</Text>
+    </div>
+  );
 };
 
 export default Team;
