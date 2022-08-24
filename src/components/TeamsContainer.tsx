@@ -1,4 +1,4 @@
-import { Center, Divider, Stack, Text } from "@chakra-ui/react";
+import { Center, Divider, Stack, Text, VStack } from "@chakra-ui/react";
 import parseISO from "date-fns/parseISO";
 import format from "date-fns-tz/format";
 import { GameTeam, Match } from "../../types/ResponseData";
@@ -16,9 +16,11 @@ const TeamsContainer = ({ teams, match }: TeamsContainerProps) => {
     <div>
       <Stack direction="row" justify="space-between">
         <div>
-          {teams.map((teamData) => {
-            return <Team key={teamData.id} teamData={teamData} />;
-          })}
+          <VStack align="start">
+            {teams.map((teamData) => {
+              return <Team key={teamData.id} teamData={teamData} />;
+            })}
+          </VStack>
         </div>
 
         <Center>
