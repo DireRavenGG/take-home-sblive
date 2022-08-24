@@ -1,8 +1,10 @@
+import { Match } from "../../types/ResponseData";
 import Game from "./Game";
 
-const GamesContainer = ({ games }: any) => {
-  // add types
-
+type GamesContainerProps = {
+  games?: Match[];
+};
+const GamesContainer = ({ games }: GamesContainerProps) => {
   return (
     <div>
       {games
