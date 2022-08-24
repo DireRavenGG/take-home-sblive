@@ -8,7 +8,7 @@ const GamesContainer = ({ games }: GamesContainerProps) => {
   return (
     <div>
       {games
-        ? games.map((game: any) => {
+        ? games.map((game: Match) => {
             return <Game key={game.uuid} game={game} />;
           })
         : null}
