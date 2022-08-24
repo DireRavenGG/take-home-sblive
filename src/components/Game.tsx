@@ -1,11 +1,15 @@
 import { Match } from "../../types/ResponseData";
-
+import TeamsContainer from "./TeamsContainer";
 type GameProps = {
-  game: Match | undefined;
+  game: Match;
 };
 
 const Game = ({ game }: GameProps) => {
-  return <div></div>;
+  return (
+    <div>
+      <TeamsContainer teams={game.game_teams} />
+    </div>
+  );
 };
 
 export default Game;
