@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import GamesContainer from "./components/GamesContainer";
 import "./App.css";
 
 const getGameData = async (date: string) => {
@@ -10,10 +11,17 @@ const getGameData = async (date: string) => {
 
 function App() {
   const [games, setGames] = useState();
-  getGameData("2022-08-23").then((res) => {
-    setGames(res.data);
-  });
-  return <div className="App">{}</div>;
+  useEffect(() => {
+    getGameData("2022-08-23").then((res) => {
+      setGames(res.data);
+    });
+  }, []);
+  console.log(games);
+  return (
+    <div className="App">
+      <GamesContainer games={games} />
+    </div>
+  );
 }
 
 export default App;
