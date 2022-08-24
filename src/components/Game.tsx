@@ -1,3 +1,4 @@
+import { LinkBox } from "@chakra-ui/react";
 import { Match } from "../../types/ResponseData";
 import TeamsContainer from "./TeamsContainer";
 type GameProps = {
@@ -6,9 +7,9 @@ type GameProps = {
 
 const Game = ({ game }: GameProps) => {
   return (
-    <div>
+    <LinkBox>
       <TeamsContainer teams={game.game_teams} match={game} />
-    </div>
+    </LinkBox>
   );
 };
 

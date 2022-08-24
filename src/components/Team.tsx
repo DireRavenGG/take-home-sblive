@@ -1,4 +1,12 @@
-import { Stack, Image, Text, Box, Heading, VStack } from "@chakra-ui/react";
+import {
+  Stack,
+  Image,
+  Text,
+  Box,
+  Heading,
+  VStack,
+  LinkOverlay,
+} from "@chakra-ui/react";
 import { GameTeam } from "../../types/ResponseData";
 
 type TeamProps = {
@@ -23,6 +31,8 @@ const Team = ({ teamData }: TeamProps) => {
           </Box>
         </VStack>
       </Stack>
+      {/* Should redirect to a scoreboard page/ maybe open modal that shows more information not sure yet */}
+      <LinkOverlay href="/"></LinkOverlay>
     </div>
   );
 };
