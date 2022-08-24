@@ -1,4 +1,4 @@
-import { Stack, Image, Box, Heading } from "@chakra-ui/react";
+import { Stack, Image, Text, Box, Heading } from "@chakra-ui/react";
 import { GameTeam } from "../../types/ResponseData";
 
 type TeamProps = {
@@ -17,6 +17,7 @@ const Team = ({ teamData }: TeamProps) => {
           <Box boxSize="32px"></Box>
         )}
         <Heading size="sm">{school.name}</Heading>
+        <Text>{}</Text>
       </Stack>
     </div>
   );

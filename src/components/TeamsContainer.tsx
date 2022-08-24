@@ -1,5 +1,5 @@
-import { Divider, Stack, Text } from "@chakra-ui/react";
-import { parseISO } from "date-fns";
+import { Center, Divider, Stack, Text } from "@chakra-ui/react";
+import parseISO from "date-fns/parseISO";
 import format from "date-fns-tz/format";
 import { GameTeam, Match } from "../../types/ResponseData";
 import Team from "./Team";
@@ -10,21 +10,22 @@ type TeamsContainerProps = {
 };
 
 const TeamsContainer = ({ teams, match }: TeamsContainerProps) => {
-  const time = format(parseISO(match.date), "hh:mm aaa z");
+  const startTime = format(parseISO(match.date), "hh:mm aaa z"); // hour:min am/pm timezone
 
-  console.log(parseISO(match.date));
   return (
     <div>
-      <Stack direction="row">
+      <Stack direction="row" justify="space-between">
         <div>
           {teams.map((teamData) => {
             return <Team key={teamData.id} teamData={teamData} />;
           })}
         </div>
-        <Divider orientation="vertical" />
-        <div>
-          <Text>{time}</Text>
-        </div>
+
+        <Center>
+          <Divider orientation="vertical" />
+
+          <Text paddingLeft="8px">{startTime}</Text>
+        </Center>
       </Stack>
     </div>
   );
