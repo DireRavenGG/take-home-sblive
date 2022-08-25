@@ -1,22 +1,23 @@
 import { useEffect, useState } from "react";
 import GamesContainer from "./components/GamesContainer";
-import { ResponseData, Match } from "../types/ResponseData";
+import { Match } from "../types/ResponseData";
+import { getGameData } from "./api/getGameData";
 import "./App.css";
-
-const getGameData = async (date: string) => {
-  const link = `/v2/games?date=${date}&priority_order=true`;
-  const res = await fetch(link);
-  const data: ResponseData = await res.json();
-  return data;
-};
 
 function App() {
   const [games, setGames] = useState<Match[]>();
+  const [query, setQuery] = useState({
+    date: "",
+    state: undefined,
+    gender: undefined,
+    status: undefined,
+    sport: undefined,
+  });
   useEffect(() => {
-    getGameData("2022-08-23").then((res) => {
+    getGameData(query).then((res) => {
       setGames(res.data);
     });
-  }, []);
+  }, [query]);
 
   return (
     <div className="App">
