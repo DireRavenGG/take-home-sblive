@@ -1,21 +1,6 @@
 import { ResponseData } from "../../types/ResponseData";
 
-type getGameDataProps = {
-  date: string;
-  state?: string;
-  gender?: number;
-  status?: number;
-  sport?: number;
-};
-
-export const getGameData = async ({
-  date,
-  state,
-  gender,
-  status,
-  sport,
-}: getGameDataProps) => {
-  const link = `/v2/games?date=${date}&priority_order=true`;
+export const getGameData = async (link: string) => {
   const res = await fetch(link);
   const data: ResponseData = await res.json();
   return data;
