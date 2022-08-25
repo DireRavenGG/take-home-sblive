@@ -1,13 +1,14 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import GamesContainer from "./components/GamesContainer";
 import { Match } from "../types/ResponseData";
-import { getGameData } from "./api/getGameData";
 import "./App.css";
 import { generateQueryString } from "./utils/generateQueryString";
 import FilterContainer from "./components/FilterContainer";
+import useQueryGameData from "./utils/useQueryGameData";
+import { queryClient } from "./index";
 
 function App() {
-  const [games, setGames] = useState<Match[]>();
+  const [games, setGames] = useState<Match[]>([]);
   const [query, setQuery] = useState({
     date: "2022-08-24",
     state: "",
@@ -15,6 +16,7 @@ function App() {
     status_id: "",
     sport_id: "",
   });
+  const { isLoading, data } = useQueryGameData(generateQueryString(query));
 
   const changeQuery = (e: ChangeEvent<HTMLSelectElement>, id: string) => {
     setQuery((prevQuery) => ({
@@ -24,15 +26,25 @@ function App() {
   };
 
   useEffect(() => {
-    getGameData(generateQueryString(query)).then((res) => {
-      setGames(res.data);
-    });
-  }, [query]);
+    queryClient.invalidateQueries();
+    if (data) {
+      setGames(data.data);
+    }
+  }, [data]);
 
   return (
     <div className="App">
-      <FilterContainer changeQuery={changeQuery} />
-      <GamesContainer games={games} />
+      {isLoading ? (
+        <div>
+          <FilterContainer changeQuery={changeQuery} />
+          <span>Loading...</span>
+        </div>
+      ) : (
+        <div>
+          <FilterContainer changeQuery={changeQuery} />
+          <GamesContainer games={games} />
+        </div>
+      )}
     </div>
   );
 }
