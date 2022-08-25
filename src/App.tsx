@@ -18,11 +18,21 @@ function App() {
   });
   const { isLoading, data } = useQueryGameData(generateQueryString(query));
 
-  const changeQuery = (e: ChangeEvent<HTMLSelectElement>, id: string) => {
-    setQuery((prevQuery) => ({
-      ...prevQuery,
-      [id]: e.target.value,
-    }));
+  const changeQuery = (
+    e: string | ChangeEvent<HTMLSelectElement>,
+    id: string
+  ) => {
+    if (typeof e == "string") {
+      setQuery((prevQuery) => ({
+        ...prevQuery,
+        [id]: e,
+      }));
+    } else {
+      setQuery((prevQuery) => ({
+        ...prevQuery,
+        [id]: e.target.value,
+      }));
+    }
   };
 
   useEffect(() => {
