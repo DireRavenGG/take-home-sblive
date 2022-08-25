@@ -23,7 +23,7 @@ export interface Match {
   secondary_status_id: number | null;
   slug: string;
   sport_id: number;
-  status_id: number;
+  status_id: 1 | 2 | 3;
   title: string | null;
   user: string | null;
   uuid: string;
