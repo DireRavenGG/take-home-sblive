@@ -1,8 +1,17 @@
-import { Box, Center, Divider, Stack, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Divider,
+  Heading,
+  Stack,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import parseISO from "date-fns/parseISO";
 import format from "date-fns-tz/format";
 import { GameTeam, Match } from "../../types/ResponseData";
 import Team from "./Team";
+import { statusChecker } from "./utils/statusChecker";
 
 type TeamsContainerProps = {
   teams: GameTeam[];
@@ -25,7 +34,10 @@ const TeamsContainer = ({ teams, match }: TeamsContainerProps) => {
 
         <Center>
           <Divider orientation="vertical" />
-          <Text paddingLeft="8px">{startTime}</Text>
+          <VStack>
+            <Heading size="sm">{statusChecker(match.status_id)}</Heading>
+            <Text paddingLeft="8px">{startTime}</Text>
+          </VStack>
         </Center>
       </Stack>
     </Box>
