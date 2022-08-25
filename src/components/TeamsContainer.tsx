@@ -3,6 +3,7 @@ import {
   Center,
   Divider,
   Heading,
+  LinkOverlay,
   Stack,
   Text,
   VStack,
@@ -40,6 +41,7 @@ const TeamsContainer = ({ teams, match }: TeamsContainerProps) => {
           </VStack>
         </Center>
       </Stack>
+      <LinkOverlay href="/"></LinkOverlay>
     </Box>
   );
 };
