@@ -23,9 +23,9 @@ export const statusOptions = [
 ];
 
 export const genderOptions = [
-  { value: "1", text: "male" },
-  { value: "2", text: "female" },
-  { value: "3", text: "coed" },
+  { value: "1", text: "Male" },
+  { value: "2", text: "Female" },
+  { value: "3", text: "Coed" },
 ];
 
 const usStates = new UsaStates();
