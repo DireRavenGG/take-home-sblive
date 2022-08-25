@@ -30,4 +30,7 @@ export const genderOptions = [
 
 const usStates = new UsaStates();
 const abbreviatedStates = usStates.arrayOf("abbreviations");
-export const stateOptions = abbreviatedStates;
+export const stateOptions = abbreviatedStates.map((state) => ({
+  value: state,
+  text: state,
+}));

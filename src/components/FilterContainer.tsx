@@ -24,6 +24,13 @@ const FilterContainer = ({ changeQuery }: FilterContainerProps) => {
     </Button>
   );
 
+  const selectData = [
+    { id: "sport_id", func: sportsOptions },
+    { id: "gender_id", func: genderOptions },
+    { id: "status_id", func: statusOptions },
+    { id: "state", func: stateOptions },
+  ];
+
   return (
     <ContainerWrapper size="900px">
       <HStack>
@@ -38,54 +45,20 @@ const FilterContainer = ({ changeQuery }: FilterContainerProps) => {
             customInput={React.createElement(React.forwardRef(CalendarButton))}
           />
         </Center>
-        <Select
-          placeholder="Sport"
-          onChange={(e) => {
-            changeQuery(e, "sport_id");
-          }}
-        >
-          {sportsOptions.map(({ value, text }) => (
-            <option key={value} value={value}>
-              {text}
-            </option>
-          ))}
-        </Select>
-        <Select
-          placeholder="Gender"
-          onChange={(e) => {
-            changeQuery(e, "gender_id");
-          }}
-        >
-          {genderOptions.map(({ value, text }) => (
-            <option key={value} value={value}>
-              {text}
-            </option>
-          ))}
-        </Select>
-        <Select
-          placeholder="Status"
-          onChange={(e) => {
-            changeQuery(e, "status_id");
-          }}
-        >
-          {statusOptions.map(({ value, text }) => (
-            <option key={value} value={value}>
-              {text}
-            </option>
-          ))}
-        </Select>
-        <Select
-          placeholder="State"
-          onChange={(e) => {
-            changeQuery(e, "state");
-          }}
-        >
-          {stateOptions.map((value) => (
-            <option key={value + "1"} value={value}>
-              {value}
-            </option>
-          ))}
-        </Select>
+        {selectData.map(({ id, func }) => (
+          <Select
+            placeholder="All"
+            onChange={(e) => {
+              changeQuery(e, id);
+            }}
+          >
+            {func.map(({ value, text }) => (
+              <option key={`${text}-${value}`} value={value}>
+                {text}
+              </option>
+            ))}
+          </Select>
+        ))}
       </HStack>
     </ContainerWrapper>
   );
