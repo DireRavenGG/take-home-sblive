@@ -18,7 +18,9 @@ const Team = ({ teamData }: TeamProps) => {
           />
         </Box>
         <VStack spacing={0} align="start">
-          <Heading size="sm">{school.name}</Heading>
+          <Heading size="sm" noOfLines={1} textAlign="left">
+            {school.name}
+          </Heading>
           <Box>
             <Text>{school.mascot || "TBA"}</Text>
           </Box>

@@ -20,7 +20,7 @@ const Game = ({ game }: GameProps) => {
       <button style={{ width: "100%" }} onClick={onOpen}>
         <TeamsContainer teams={game.game_teams} match={game} />
       </button>
-      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+      <Modal size="xl" isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
         <ModalContent>
           <Scoreboard match={game} />

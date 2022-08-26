@@ -17,7 +17,7 @@ const Scoreboard = ({ match }: ScoreboardProps) => {
   );
   return (
     <Box>
-      <ContainerWrapper size="md">
+      <ContainerWrapper size="md" p={8}>
         {match.status_id === 1 ? (
           <EmptyScoreboard
             teams={teams}

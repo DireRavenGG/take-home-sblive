@@ -17,13 +17,20 @@ const EmptyScoreboard = ({
   return (
     <VStack justifyContent="center" alignItems="center">
       <Grid width="100%" templateColumns="1fr 64px 1fr" alignItems="center">
-        <GridItem justifySelf="end">
+        <GridItem justifySelf="end" w="100%">
           <HStack>
-            <Text fontWeight="semibold">{schoolOne.name}</Text>
+            <Text
+              fontWeight="black"
+              fontSize="xl"
+              textAlign="center"
+              flexGrow={1}
+            >
+              {schoolOne.name}
+            </Text>
             <Image
               src={schoolOne.image}
               fallbackSrc={placeholderLogo}
-              boxSize="32px"
+              boxSize="64px"
             />
           </HStack>
         </GridItem>
@@ -35,9 +42,16 @@ const EmptyScoreboard = ({
             <Image
               src={schoolTwo.image}
               fallbackSrc={placeholderLogo}
-              boxSize="32px"
+              boxSize="64px"
             />
-            <Text fontWeight="semibold">{schoolTwo.name}</Text>
+            <Text
+              fontWeight="black"
+              fontSize="xl"
+              textAlign="center"
+              flexGrow={1}
+            >
+              {schoolTwo.name}
+            </Text>
           </HStack>
         </GridItem>
       </Grid>

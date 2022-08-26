@@ -1,12 +1,4 @@
-import {
-  Box,
-  Center,
-  Divider,
-  Heading,
-  Stack,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Center, Heading, Stack, Text, VStack } from "@chakra-ui/react";
 import parseISO from "date-fns/parseISO";
 import format from "date-fns-tz/format";
 import { GameTeam, Match } from "../../types/ResponseData";
@@ -22,9 +14,9 @@ const TeamsContainer = ({ teams, match }: TeamsContainerProps) => {
   const startTime = format(parseISO(match.date), "hh:mm aaa z"); // hour:min am/pm timezone
 
   return (
-    <Box maxW="100%" height="100%" borderWidth="1px" borderRadius="md">
-      <Stack direction="row" justify="space-between" p="8px">
-        <Box>
+    <Box maxW="100%" height="100%" borderWidth="1px" borderRadius="xl">
+      <Stack direction="row" justify="space-between">
+        <Box p="8px">
           <VStack align="start">
             {teams.map((teamData) => {
               return <Team key={teamData.id} teamData={teamData} />;
@@ -32,8 +24,7 @@ const TeamsContainer = ({ teams, match }: TeamsContainerProps) => {
           </VStack>
         </Box>
 
-        <Center>
-          <Divider orientation="vertical" />
+        <Center bg="rgba(0,0,0,.05)" p="8px" borderRadius="0 .7rem .7rem 0">
           <VStack>
             <Heading size="sm">{statusChecker(match.status_id)}</Heading>
             <Text paddingLeft="8px">{startTime}</Text>
