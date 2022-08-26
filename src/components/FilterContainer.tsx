@@ -33,7 +33,7 @@ const FilterContainer = ({ changeQuery }: FilterContainerProps) => {
   ];
 
   return (
-    <ContainerWrapper size="md" pt={8}>
+    <ContainerWrapper size="md" pt={4}>
       <HStack>
         <Center>
           <DatePicker
