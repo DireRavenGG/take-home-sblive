@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 
 const breakpoints = {
   sm: "320px",
-  md: "650px",
+  md: "700px",
   lg: "960px",
   xl: "1200px",
   "2xl": "1536px",

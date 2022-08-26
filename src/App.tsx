@@ -6,6 +6,7 @@ import { generateQueryString } from "./utils/generateQueryString";
 import FilterContainer from "./components/FilterContainer";
 import useQueryGameData from "./utils/useQueryGameData";
 import { queryClient } from "./index";
+import { Center, Spinner } from "@chakra-ui/react";
 
 function App() {
   const [games, setGames] = useState<Match[]>([]);
@@ -47,7 +48,9 @@ function App() {
       {isLoading ? (
         <div>
           <FilterContainer changeQuery={changeQuery} />
-          <span>Loading...</span>
+          <Center m={16}>
+            <Spinner />
+          </Center>
         </div>
       ) : (
         <div>

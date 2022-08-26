@@ -7,10 +7,11 @@ type GamesContainerProps = {
   games: Match[];
 };
 const GamesContainer = ({ games }: GamesContainerProps) => {
+  const gamesPresent = !!games.length;
   return (
     <div>
       <ContainerWrapper size="md">
-        {games.length > 0 ? (
+        {gamesPresent ? (
           <SimpleGrid columns={{ sm: 1, md: 2 }} py={4} spacing={2}>
             {games.map((game: Match) => {
               return <Game key={game.uuid} game={game} />;

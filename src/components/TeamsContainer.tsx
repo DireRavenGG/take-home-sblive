@@ -11,7 +11,7 @@ type TeamsContainerProps = {
 };
 
 const TeamsContainer = ({ teams, match }: TeamsContainerProps) => {
-  const startTime = format(parseISO(match.date), "hh:mm aaa z"); // hour:min am/pm timezone
+  const startTime = format(parseISO(match.date), "hh:mm aa z"); // hour:min am/pm timezone
 
   return (
     <Box maxW="100%" height="100%" borderWidth="1px" borderRadius="xl">
@@ -24,7 +24,7 @@ const TeamsContainer = ({ teams, match }: TeamsContainerProps) => {
           </VStack>
         </Box>
 
-        <Center bg="rgba(0,0,0,.05)" p="8px" borderRadius="0 .7rem .7rem 0">
+        <Center bg="#edf2f7" p="8px" borderRadius="0 .7rem .7rem 0">
           <VStack>
             <Heading size="sm">{statusChecker(match.status_id)}</Heading>
             <Text paddingLeft="8px">{startTime}</Text>
