@@ -9,7 +9,7 @@ type GamesContainerProps = {
 const GamesContainer = ({ games }: GamesContainerProps) => {
   return (
     <div>
-      <ContainerWrapper size="900px">
+      <ContainerWrapper size="md">
         {games.length > 0 ? (
           <SimpleGrid columns={{ sm: 1, md: 2 }} py={8} spacing={2}>
             {games.map((game: Match) => {
