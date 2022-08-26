@@ -1,4 +1,4 @@
-import { Container } from "@chakra-ui/react";
+import { Container, ContainerProps } from "@chakra-ui/react";
 import React from "react";
 type ContainerWrapperProps = {
   size: "sm" | "md";
@@ -6,11 +6,14 @@ type ContainerWrapperProps = {
 const ContainerWrapper = ({
   children,
   size,
-}: React.PropsWithChildren<ContainerWrapperProps>) => {
+  ...props
+}: React.PropsWithChildren<ContainerWrapperProps> & ContainerProps) => {
   return size === "sm" ? (
-    <Container maxW={"400px"}></Container>
+    <Container maxW={"400px"} {...props}></Container>
   ) : (
-    <Container maxW={"900px"}>{children}</Container>
+    <Container maxW={"900px"} {...props}>
+      {children}
+    </Container>
   );
 };
 
