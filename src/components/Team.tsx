@@ -7,16 +7,15 @@ type TeamProps = {
 
 const Team = ({ teamData }: TeamProps) => {
   const school = teamData.team;
-
   return (
     <div>
       <Stack direction="row" spacing={4}>
         <Box alignSelf="center" justifySelf="center" width="32px">
-          {school.image ? (
-            <Image src={school.image} boxSize="32px" />
-          ) : (
-            <Image src={placeholderLogo} boxSize="32px" />
-          )}
+          <Image
+            src={school.image}
+            fallbackSrc={placeholderLogo}
+            boxSize="32px"
+          />
         </Box>
         <VStack spacing={0} align="start">
           <Heading size="sm">{school.name}</Heading>
