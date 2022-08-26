@@ -12,12 +12,13 @@ import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import { CalendarIcon } from "@chakra-ui/icons";
 import React from "react";
+import useWindowDimensions from "./utils/useWindowDimensions";
 type FilterContainerProps = {
   changeQuery: (e: ChangeEvent<HTMLSelectElement> | string, id: string) => void;
 };
 const FilterContainer = ({ changeQuery }: FilterContainerProps) => {
   const [startDate, setStartDate] = useState(new Date());
-
+  const { width, height } = useWindowDimensions();
   const CalendarButton = (props: any, ref: React.Ref<HTMLInputElement>) => (
     <Button {...props}>
       <CalendarIcon />
