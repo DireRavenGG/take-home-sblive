@@ -1,6 +1,6 @@
 import { Stack, Image, Text, Box, Heading, VStack } from "@chakra-ui/react";
 import { GameTeam } from "../../types/ResponseData";
-
+import placeholderLogo from "../assets/placeholder_sblive.png";
 type TeamProps = {
   teamData: GameTeam;
 };
@@ -11,15 +11,17 @@ const Team = ({ teamData }: TeamProps) => {
   return (
     <div>
       <Stack direction="row" spacing={4}>
-        {school.image ? (
-          <Image src={school.image} boxSize="32px"></Image>
-        ) : (
-          <Box boxSize="32px"></Box>
-        )}
+        <Box alignSelf="center" justifySelf="center" width="32px">
+          {school.image ? (
+            <Image src={school.image} boxSize="32px" />
+          ) : (
+            <Image src={placeholderLogo} boxSize="32px" />
+          )}
+        </Box>
         <VStack spacing={0} align="start">
           <Heading size="sm">{school.name}</Heading>
           <Box>
-            <Text>{school.mascot}</Text>
+            <Text>{school.mascot || "TBA"}</Text>
           </Box>
         </VStack>
       </Stack>
