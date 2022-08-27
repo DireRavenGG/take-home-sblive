@@ -25,7 +25,7 @@ const GamesContainer = ({
           {games.map((game: Match) => {
             let uniqueId = count;
             count++;
-            if (count === games.length) {
+            if (count === games.length - 5) {
               return (
                 <Game
                   last={true}
