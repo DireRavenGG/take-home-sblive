@@ -20,6 +20,7 @@ function App() {
     sport_id: "",
     page: 0,
   });
+
   const [link, setLink] = useState(generateQueryString(query));
 
   const { isLoading, data, isFetching, isPreviousData } = useQuery(

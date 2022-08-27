@@ -22,6 +22,7 @@ import DatePicker from "react-datepicker";
 import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import { CalendarIcon } from "@chakra-ui/icons";
+import useScrollPosition from "./utils/useScrollPosition";
 
 type FilterContainerProps = {
   changeQuery: (e: ChangeEvent<HTMLSelectElement> | string, id: string) => void;
@@ -33,6 +34,7 @@ type FilterContainerProps = {
     sport_id: string;
   };
 };
+
 const FilterContainer = ({ changeQuery, query }: FilterContainerProps) => {
   type ObjectKey = keyof typeof query;
   const today = new Date();
@@ -67,9 +69,19 @@ const FilterContainer = ({ changeQuery, query }: FilterContainerProps) => {
     onClose();
   };
 
+  const scrollPosition = useScrollPosition();
+
   return (
-    <ContainerWrapper size="md" pt={4}>
-      <Button onClick={onOpen}>Filter</Button>
+    <ContainerWrapper
+      size="max"
+      py={4}
+      bg="white"
+      boxShadow={scrollPosition === 0 ? "0" : "lg"}
+      style={{ position: "sticky", top: 0 }}
+    >
+      <ContainerWrapper size="md">
+        <Button onClick={onOpen}>Filter</Button>
+      </ContainerWrapper>
       <Drawer onClose={onClose} isOpen={isDrawerOpen} placement="left">
         <DrawerOverlay />
         <DrawerContent borderRadius="0 .75rem .75rem 0" p={4}>
