@@ -47,14 +47,14 @@ function App() {
     <div className="App">
       {isLoading ? (
         <div>
-          <FilterContainer changeQuery={changeQuery} />
+          <FilterContainer changeQuery={changeQuery} query={query} />
           <Center m={16}>
             <Spinner />
           </Center>
         </div>
       ) : (
         <div>
-          <FilterContainer changeQuery={changeQuery} />
+          <FilterContainer changeQuery={changeQuery} query={query} />
           <GamesContainer games={games} />
         </div>
       )}

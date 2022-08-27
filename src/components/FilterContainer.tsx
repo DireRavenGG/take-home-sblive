@@ -25,8 +25,16 @@ import { CalendarIcon } from "@chakra-ui/icons";
 
 type FilterContainerProps = {
   changeQuery: (e: ChangeEvent<HTMLSelectElement> | string, id: string) => void;
+  query: {
+    date: string;
+    state: string;
+    gender_id: string;
+    status_id: string;
+    sport_id: string;
+  };
 };
-const FilterContainer = ({ changeQuery }: FilterContainerProps) => {
+const FilterContainer = ({ changeQuery, query }: FilterContainerProps) => {
+  type ObjectKey = keyof typeof query;
   const [startDate, setStartDate] = useState(new Date());
   const [currDate, setCurrDate] = useState(format(startDate, "MM-dd-yyyy"));
   const { onOpen, onClose, isOpen: isDrawerOpen } = useDisclosure();
@@ -70,6 +78,7 @@ const FilterContainer = ({ changeQuery }: FilterContainerProps) => {
             {selectData.map(({ placeholder, id, func }) => (
               <Select
                 placeholder={placeholder}
+                defaultValue={query[id as ObjectKey]}
                 onChange={(e) => {
                   changeQuery(e, id);
                   onClose();
