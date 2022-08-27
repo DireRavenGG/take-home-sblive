@@ -18,7 +18,7 @@ function App() {
     gender_id: "",
     status_id: "",
     sport_id: "",
-    page: 0,
+    page: 1,
   });
 
   const [link, setLink] = useState(generateQueryString(query));
@@ -34,6 +34,7 @@ function App() {
   useEffect(() => {
     setLink(generateQueryString(query));
   }, [query]);
+
   const changeQuery = (
     e: string | ChangeEvent<HTMLSelectElement>,
     id: string
@@ -45,13 +46,13 @@ function App() {
       setQuery((prevQuery) => ({
         ...prevQuery,
         [id]: e,
-        page: 0,
+        page: 1,
       }));
     } else {
       setQuery((prevQuery) => ({
         ...prevQuery,
         [id]: e.target.value,
-        page: 0,
+        page: 1,
       }));
     }
   };
@@ -65,7 +66,7 @@ function App() {
 
   useEffect(() => {
     if (data && !isPreviousData) {
-      setGames((prevGames) => [...data.data, ...prevGames]);
+      setGames((prevGames) => [...prevGames, ...data.data]);
     }
   }, [data, isPreviousData]);
 
