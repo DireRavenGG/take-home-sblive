@@ -35,7 +35,8 @@ type FilterContainerProps = {
 };
 const FilterContainer = ({ changeQuery, query }: FilterContainerProps) => {
   type ObjectKey = keyof typeof query;
-  const [startDate, setStartDate] = useState(new Date());
+  const today = new Date();
+  const [startDate, setStartDate] = useState(today);
   const [currDate, setCurrDate] = useState(format(startDate, "MM-dd-yyyy"));
   const { onOpen, onClose, isOpen: isDrawerOpen } = useDisclosure();
   const CalendarButton = forwardRef(({ onClick }: any, ref: any) => (
@@ -50,6 +51,21 @@ const FilterContainer = ({ changeQuery, query }: FilterContainerProps) => {
     { placeholder: "Status", id: "status_id", func: statusOptions },
     { placeholder: "State", id: "state", func: stateOptions },
   ];
+
+  const resetQuery = () => {
+    const ids = ["state", "sport_id", "gender_id", "status_id", "date"];
+    ids.forEach((id) => {
+      if (id === "date") {
+        changeQuery(format(today, "yyyy-MM-dd"), id);
+      } else {
+        changeQuery("", id);
+      }
+    });
+
+    setStartDate(today);
+    setCurrDate(format(today, "MM-dd-yyyy"));
+    onClose();
+  };
 
   return (
     <ContainerWrapper size="md" pt={4}>
@@ -91,6 +107,7 @@ const FilterContainer = ({ changeQuery, query }: FilterContainerProps) => {
                 ))}
               </Select>
             ))}
+            <Button onClick={resetQuery}>Reset</Button>
           </VStack>
         </DrawerContent>
       </Drawer>
