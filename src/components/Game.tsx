@@ -4,7 +4,7 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
-import useObserver from "../utils/useObserver";
+import useObserver from "./utils/hooks/useObserver";
 import { Match } from "../../types/ResponseData";
 import Scoreboard from "./Scoreboard";
 import TeamsContainer from "./TeamsContainer";
