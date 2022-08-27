@@ -22,7 +22,7 @@ import DatePicker from "react-datepicker";
 import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import { CalendarIcon } from "@chakra-ui/icons";
-import useScrollPosition from "./utils/useScrollPosition";
+import useScrollPosition from "./utils/hooks/useScrollPosition";
 
 type FilterContainerProps = {
   changeQuery: (e: ChangeEvent<HTMLSelectElement> | string, id: string) => void;
