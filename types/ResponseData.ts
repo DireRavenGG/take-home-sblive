@@ -1,6 +1,6 @@
 export interface ResponseData {
   data: Match[];
-  meta: MetaData[];
+  meta: MetaData;
 }
 
 export interface Match {

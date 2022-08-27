@@ -1,6 +1,6 @@
 import queryString from "query-string";
 
-type generateQueryStringProps = Record<string, string>;
+type generateQueryStringProps = Record<string, string | number>;
 
 export const generateQueryString = (queries: generateQueryStringProps) => {
   const string = queryString.stringify(queries, {

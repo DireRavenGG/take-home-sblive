@@ -93,6 +93,7 @@ const FilterContainer = ({ changeQuery, query }: FilterContainerProps) => {
             </HStack>
             {selectData.map(({ placeholder, id, func }) => (
               <Select
+                key={placeholder}
                 placeholder={placeholder}
                 defaultValue={query[id as ObjectKey]}
                 onChange={(e) => {

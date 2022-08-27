@@ -19,7 +19,12 @@ const TeamsContainer = ({ teams, match }: TeamsContainerProps) => {
         <Box p="8px">
           <VStack align="start">
             {teams.map((teamData) => {
-              return <Team key={teamData.id} teamData={teamData} />;
+              return (
+                <Team
+                  key={`${match.uuid}-${teamData.id}`}
+                  teamData={teamData}
+                />
+              );
             })}
           </VStack>
         </Box>
