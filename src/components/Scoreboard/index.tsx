@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import { Match } from "../../../types/ResponseData";
 import ContainerWrapper from "../utils/ContainerWrapper";
 import { displayMessage } from "../utils/displayMessage";
@@ -16,19 +15,17 @@ const Scoreboard = ({ match }: ScoreboardProps) => {
     match.date
   );
   return (
-    <Box>
-      <ContainerWrapper size="md" p={8}>
-        {match.status_id === 1 ? (
-          <EmptyScoreboard
-            teams={teams}
-            message={message}
-            secondaryMessage={secondaryMessage}
-          />
-        ) : (
-          <DisplayScoreboard teams={teams} />
-        )}
-      </ContainerWrapper>
-    </Box>
+    <ContainerWrapper size="md" p={8}>
+      {match.status_id === 1 ? (
+        <EmptyScoreboard
+          teams={teams}
+          message={message}
+          secondaryMessage={secondaryMessage}
+        />
+      ) : (
+        <DisplayScoreboard teams={teams} />
+      )}
+    </ContainerWrapper>
   );
 };
 

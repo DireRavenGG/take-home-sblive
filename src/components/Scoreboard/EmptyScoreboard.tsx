@@ -15,7 +15,7 @@ const EmptyScoreboard = ({
   const schoolOne = teams[0].team;
   const schoolTwo = teams[1].team;
   return (
-    <VStack justifyContent="center" alignItems="center">
+    <VStack spacing={4} justify="center">
       <Grid width="100%" templateColumns="1fr 64px 1fr" alignItems="center">
         <GridItem justifySelf="end" w="100%">
           <HStack>

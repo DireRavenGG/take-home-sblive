@@ -50,7 +50,7 @@ const FilterContainer = ({ changeQuery }: FilterContainerProps) => {
         <DrawerOverlay />
         <DrawerContent borderRadius="0 .75rem .75rem 0" p={4}>
           <VStack>
-            <HStack justify="left" w="240px">
+            <HStack justify="left" w="100%">
               <Box flexShrink="0">
                 <DatePicker
                   selected={startDate}
@@ -60,6 +60,7 @@ const FilterContainer = ({ changeQuery }: FilterContainerProps) => {
                     changeQuery(queryDateString, "date");
                     setCurrDate(dateString);
                     setStartDate(date);
+                    onClose();
                   }}
                   customInput={<CalendarButton />}
                 />
@@ -71,8 +72,8 @@ const FilterContainer = ({ changeQuery }: FilterContainerProps) => {
                 placeholder={placeholder}
                 onChange={(e) => {
                   changeQuery(e, id);
+                  onClose();
                 }}
-                w={240}
               >
                 {func.map(({ value, text }) => (
                   <option key={`${text}-${value}`} value={value}>
