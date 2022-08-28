@@ -70,6 +70,20 @@ function App() {
     }
   }, [data, isPreviousData]);
 
+  if (query.page === data?.meta.total_pages) {
+    return (
+      <div>
+        <FilterContainer changeQuery={changeQuery} query={query} />
+        <GamesContainer
+          games={games}
+          nextPage={nextPage}
+          currPage={query.page}
+          allPages={data?.meta.total_pages}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="App">
       {isLoading || (isFetching && games.length === 0) ? (

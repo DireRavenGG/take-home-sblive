@@ -6,6 +6,6 @@ export const generateQueryString = (queries: generateQueryStringProps) => {
   const string = queryString.stringify(queries, {
     skipEmptyString: true,
   });
-  const url = "https://api.scorebooklive.com/v2/games?" + string;
+  const url = "/v2/games?" + string;
   return url;
 };
