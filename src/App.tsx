@@ -23,7 +23,7 @@ function App() {
 
   const [link, setLink] = useState(generateQueryString(query));
 
-  const { isLoading, data, isFetching, isPreviousData } = useQuery(
+  const { data, isFetching, isPreviousData } = useQuery(
     ["gameData", link],
     () => getGameData(link),
     {
@@ -70,6 +70,7 @@ function App() {
     }
   }, [data, isPreviousData]);
 
+  // If im on the last page
   if (query.page === data?.meta.total_pages) {
     return (
       <div>
@@ -84,40 +85,46 @@ function App() {
     );
   }
 
-  return (
-    <div className="App">
-      {isLoading || (isFetching && games.length === 0) ? (
-        <div>
-          <FilterContainer changeQuery={changeQuery} query={query} />
-          <Center m={16}>
-            <Spinner />
-          </Center>
-        </div>
-      ) : isFetching ? (
-        <div>
-          <FilterContainer changeQuery={changeQuery} query={query} />
-          <GamesContainer
-            games={games}
-            nextPage={nextPage}
-            currPage={query.page}
-            allPages={data?.meta.total_pages}
-          />
+  // If fresh data is loading - no previous game data
+  if (isFetching && games.length === 0) {
+    return (
+      <div>
+        <FilterContainer changeQuery={changeQuery} query={query} />
+        <Center m={16}>
+          <Spinner />
+        </Center>
+      </div>
+    );
+  }
 
-          <Center m={16}>
-            <Spinner />
-          </Center>
-        </div>
-      ) : (
-        <div>
-          <FilterContainer changeQuery={changeQuery} query={query} />
-          <GamesContainer
-            games={games}
-            nextPage={nextPage}
-            currPage={query.page}
-            allPages={data?.meta.total_pages}
-          />
-        </div>
-      )}
+  // If data is loading and I already have game data
+  if (isFetching) {
+    return (
+      <div>
+        <FilterContainer changeQuery={changeQuery} query={query} />
+        <GamesContainer
+          games={games}
+          nextPage={nextPage}
+          currPage={query.page}
+          allPages={data?.meta.total_pages}
+        />
+        <Center m={16}>
+          <Spinner />
+        </Center>
+      </div>
+    );
+  }
+
+  // No data loading or being fetched
+  return (
+    <div>
+      <FilterContainer changeQuery={changeQuery} query={query} />
+      <GamesContainer
+        games={games}
+        nextPage={nextPage}
+        currPage={query.page}
+        allPages={data?.meta.total_pages}
+      />
     </div>
   );
 }
