@@ -91,7 +91,7 @@ const FilterContainer = ({ changeQuery, query }: FilterContainerProps) => {
                 <DatePicker
                   selected={startDate}
                   onChange={(date: Date) => {
-                    let queryDateString = format(date, "yyyy-MM-dd"); // what is this then
+                    let queryDateString = format(date, "yyyy-MM-dd");
                     let dateString = format(date, "MM-dd-yyyy");
                     changeQuery(queryDateString, "date");
                     setCurrDate(dateString);
