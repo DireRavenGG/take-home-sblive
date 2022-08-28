@@ -2,6 +2,7 @@
   "name": "take-home-sblive",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://api.scorebooklive.com/",
   "dependencies": {
     "@chakra-ui/icons": "^2.0.9",
     "@chakra-ui/react": "^2.2.9",
