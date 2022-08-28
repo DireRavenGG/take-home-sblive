@@ -18,6 +18,7 @@ const useObserver = ({ allPages, currPage, nextPage }: UseObserverProps) => {
       }
     });
     if (node) observer.current.observe(node);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return lastElement;
