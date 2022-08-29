@@ -25,4 +25,3 @@ const useObserver = ({ allPages, currPage, nextPage }: UseObserverProps) => {
 };
 
 export default useObserver;
-// github pages?
